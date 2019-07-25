@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
-end
+
     def index
         @places = Place.order(:id).paginate(:page => params[:page], :per_page => 5)    
     end
@@ -24,6 +24,7 @@ end
 
         if @place.user != current_user
             return render plain: 'Not Allowed', status: :forbidden
+        end
     end
 
     def update
