@@ -4,6 +4,11 @@ require 'rails/all'
 require 'will_paginate'
 require 'will_paginate/active_record'
 
+# require 'fog/aws'
+
+# require 'carrierwave'
+# require 'carrierwave/orm/activerecord'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
