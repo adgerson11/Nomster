@@ -5,8 +5,8 @@ CarrierWave.configure do |config|
     config.fog_public = true
     config.fog_credentials = {
       provider:              'AWS',                        # required
-      aws_access_key_id:     ENV["AKIAXC4BOX7NERJSLRQ7"],        # required
-      aws_secret_access_key: ENV["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"],        # required
+      aws_access_key_id:     ENV["AWS_ACCESS_KEY"],        # required
+      aws_secret_access_key: ENV["AWS_SECRET_KEY"],        # required
     }
-    config.fog_directory  = ENV["nomsterphotobucket"]              # required
+    config.fog_directory  = ENV["AWS_BUCKET"]              # required
   end
