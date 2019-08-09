@@ -36,6 +36,7 @@
 
   <div class="float-right">
     <% if current_user && current_user == @place.user %>
+      <%= link_to 'Add a Photo', place_photos_path(@place), class: 'btn btn-primary' %>
       <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
        <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
     <% end %>
@@ -98,19 +99,42 @@
 <% end %>
 
 <br />
-    
+<br />
+<br />
 
-<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-  <%= f.input :captions %>
-  <%= f.input :picture %>
-  <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-<% end %>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">Add a Photo</button>
+
+<!-- Modal -->
+<div id="uploadModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add a Photo</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+        <%= f.input :captions %>
+        <%= f.input :picture %>
+        <form method='post' action='' enctype="multipart/form-data">
+        <%= f.submit "Upload", class: 'btn btn-primary' %>
+        </form>
+
+      </div>
+    <% end %>
+    </div>
+
+  </div>
+</div>
 
 <% @place.photos.each do |photo| %>
   <div>
     <blockquote>
       <b><%= photo.captions %></b> -
-        <%= image_tag photo.picture.url %>
+        <%= image_tag photo.picture.url %> 
       <small><%= photo.user.email %></small>
     </blockquote>
   </div>
@@ -118,6 +142,3 @@
 
 <br />
 <br />
-
-
-
