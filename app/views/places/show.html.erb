@@ -117,12 +117,11 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-        <%= f.input :captions %>
+        <%= f.input :caption %>
         <%= f.input :picture %>
         <form method='post' action='' enctype="multipart/form-data">
         <%= f.submit "Upload", class: 'btn btn-primary' %>
         </form>
-
       </div>
     <% end %>
     </div>
@@ -133,7 +132,7 @@
 <% @place.photos.each do |photo| %>
   <div>
     <blockquote>
-      <b><%= photo.captions %></b> -
+      <b><%= photo.caption %></b> -
         <%= image_tag photo.picture.url %> 
       <small><%= photo.user.email %></small>
     </blockquote>
