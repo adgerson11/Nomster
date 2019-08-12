@@ -131,8 +131,7 @@
   <div>
     <figure>
         <%= image_tag photo.picture.url, :class=>"small-pic" %> 
-      <small><%= photo.user.email %></small>
-        <figcaption><b><%= photo.caption %></</b> - </figcaption>
+        <figcaption><b><%= photo.caption %></</b> - <small><%= photo.user.email %></small> </figcaption>
     </figure>
   </div>
 <% end %>
