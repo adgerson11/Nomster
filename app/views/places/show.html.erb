@@ -129,11 +129,11 @@
 
 <% @place.photos.each do |photo| %>
   <div>
-    <blockquote>
-      <b><%= photo.caption %></b> -
-        <%= image_tag photo.picture.url, :class=>"small-pic"%> 
+    <figure>
+        <%= image_tag photo.picture.url, :class=>"small-pic" %> 
       <small><%= photo.user.email %></small>
-    </blockquote>
+        <figcaption><b><%= photo.caption %></</b> - </figcaption>
+    </figure>
   </div>
 <% end %>
 
